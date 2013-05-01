@@ -112,8 +112,22 @@ body
 
 
 
+.options-element
+{
+	position: absolute;
+	width: 44px;;
+	height: auto;
+}
 
-
+.option-button
+{
+	font-size: 10px;
+	color: #fff;
+	margin: 0;
+	padding: 3px;
+	background: #000;
+	border: none;
+}
 
 /* ==========================================================================
    Helper classes
