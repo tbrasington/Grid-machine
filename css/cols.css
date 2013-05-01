@@ -1,0 +1,139 @@
+/*  SECTIONS  ============================================================================= */
+
+.section {
+	clear: both;
+	padding: 0px;
+	margin: 0px;
+	height: auto;
+	min-height: 300px;
+	background: #f9f9f9;
+	
+}
+
+/*  GROUPING  ============================================================================= */
+
+
+.group:before,
+.group:after {
+    content:"";
+    display:table;
+}
+.group:after {
+    clear:both;
+}
+.group {
+    zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+/*  GRID COLUMN SETUP   ==================================================================== */
+
+.block-element {
+	display: block;
+	float:left;
+	padding: 0;
+	margin: 0;
+	min-height: 300px;
+}
+
+
+/*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
+
+@media only screen and (max-width: 1024px) {
+	.block-element { 
+		padding: 0%;
+	}
+}
+
+/* 8 col */
+.span-1-8 {
+	width: 12.5%;
+}
+.span-2-8 {
+	width: 25%;
+}
+.span-3-8 {
+	width: 37.5%;
+}
+.span-4-8 {
+	width: 50%;
+}
+.span-5-8 {
+	width: 62.5%;
+}
+.span-6-8 {
+	width: 75%;
+}
+.span-7-8 {
+	width: 87.5%;
+}
+.span-8-8 {
+	width: 100%;
+}
+
+
+/* twelve cols */
+.span-1-12 {
+	width: 8.33333%;
+}
+.span-2-12 {
+	width: 16.66666%;
+}
+.span-3-12 {
+	width: 25%;
+}
+.span-4-12 {
+	width: 33.33333%;
+}
+.span-5-12 {
+	width: 41.66666%;
+}
+.span-6-12 {
+	width: 50%;
+}
+.span-7-12 {
+	width: 58.33333%;
+}
+.span-8-12 {
+	width: 66.66666%;
+}
+.span-9-12 {
+	width: 75%;
+}
+.span-10-12 {
+	width: 83.33333%;
+}
+.span-11-12 {
+	width: 91.66666%;
+}
+.span-12-12 {
+	width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+	
+	.span-1-8,
+	.span-2-8,
+	.span-3-8,
+	.span-4-8,
+	.span-5-8,
+	.span-6-8,
+	.span-7-8,
+	.span-8-8,
+	.span-1-12,
+	.span-2-12,
+	.span-3-12,
+	.span-4-12,
+	.span-5-12,
+	.span-6-12,
+	.span-7-12,
+	.span-8-12,
+	.span-9-12,
+	.span-10-12,
+	.span-11-12,
+	.span-12-12
+	{
+		width: 100%; 
+	}
+
+
+}

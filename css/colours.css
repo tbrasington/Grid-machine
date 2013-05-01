@@ -1,0 +1,9 @@
+.bg-cyan
+{
+	background: #0099ff;
+}
+
+.bg-cyan-light
+{
+	background: rgba(0,154,255,0.82);
+}
