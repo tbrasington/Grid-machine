@@ -110,7 +110,15 @@ body
 	background: #f1f1f1;
 }
 
-
+.section-settings
+{
+	position: absolute;
+	top:0;
+	right: 0;
+	width: 30px;
+	height: 30px;
+	background: #ccc;
+}
 
 .options-element
 {
@@ -127,6 +135,15 @@ body
 	padding: 3px;
 	background: #000;
 	border: none;
+}
+
+.section-options-element
+{
+	position: absolute;
+	top:0;
+	right: 30px;
+	width: 300px;
+	height: auto;
 }
 
 /* ==========================================================================

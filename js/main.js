@@ -39,6 +39,15 @@ var grid_constructor = function()
 			that.spawn_block_adjustment($(this));
 		});
 		
+		// settings for a section
+		that.grid_canvas.on('click', '.section-settings', function(e){
+			
+			e.preventDefault();
+			e.stopPropagation();
+			
+			that.spawn_section_adjustment($(this));
+		});
+		
 		// setting the size
 		that.grid_canvas.on('click', '.option-button', function(e){
 			
@@ -49,12 +58,19 @@ var grid_constructor = function()
 			
 			$(this).parent().remove();
 		});
+		
+		// adjust the section height
+		that.grid_canvas.on('keyup', '.input-small', function(e){
+			
+			var element = $(this)
+			that.adjust_section_size(element.val(),element.parents('.section'));
+		});
 	}
 	
 	this.build_a_section = function()
 	{
-		var section = $('<div />', { 'class' : 'section group'}).appendTo(that.grid_canvas);
-		
+		var section = $('<div />', { 'class' : 'section group'}).appendTo(that.grid_canvas),
+		settings = $('<div />', { 'class' : 'section-settings'}).appendTo(section);
 		//return section;
 	}
 	
@@ -62,6 +78,15 @@ var grid_constructor = function()
 	this.build_a_block = function(target_section)
 	{
 		var block_element = $('<div />', { 'class' : 'block-element span-1-8'}).appendTo(target_section);
+	}
+	
+	// options for the section
+	this.spawn_section_adjustment = function(settings_element)
+	{
+		var options_element = $('<div />', {'class' : 'section-options-element'}).appendTo(settings_element.parent());
+		
+		var input_form = $('<input />', { 'class' : 'input-small', 'name': 'section-size'}).appendTo(options_element);
+		input_form.focus();
 	}
 	
 	// contextual menu
@@ -73,6 +98,14 @@ var grid_constructor = function()
 		});
 		return options_element;
 	}
+	
+	this.adjust_section_size = function(value, section)
+	{
+		console.log(value)
+		console.log(section)
+		section.css('height', value);
+	}
+	
 }
 
 
