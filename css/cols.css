@@ -5,9 +5,11 @@
 	padding: 0px;
 	margin: 0px;
 	height: auto;
-	min-height: 300px;
+	height: 300px;
 	background: #f9f9f9;
 	width: 100%;
+	float: left;
+	position: relative;
 	
 }
 
@@ -33,21 +35,13 @@
 	float:left;
 	padding: 0;
 	margin: 0;
-	min-height: 300px;
 	background: #000;
 	background-repeat: no-repeat;
 	background-size: cover;
-
 }
 
 
-/*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
 
-@media only screen and (max-width: 1024px) {
-	.block-element { 
-		padding: 0%;
-	}
-}
 
 /* 8 col */
 .span-1-8 {
@@ -114,6 +108,157 @@
 	width: 100%;
 }
 
+/* sixteen cols */
+.span-1-16 {
+	width: 6.25%;
+}
+.span-2-16 {
+	width: 12.5%;
+}
+.span-3-16 {
+	width: 18.75%;
+}
+.span-4-16 {
+	width: 25%;
+}
+.span-5-16 {
+	width: 31.25%;
+}
+.span-6-16 {
+	width: 37.5%;
+}
+.span-7-16 {
+	width: 43.75%;
+}
+.span-8-16 {
+	width: 50%;
+}
+.span-9-16 {
+	width: 56.25%;
+}
+.span-10-16 {
+	width: 62.5%;
+}
+.span-11-16 {
+	width: 68.75%;
+}
+.span-12-16 {
+	width: 75%;
+}
+.span-13-16 {
+	width: 81.25%;
+}
+.span-14-16 {
+	width: 87.5%;
+}
+.span-15-16 {
+	width: 93.75%;
+}
+.span-16-16 {
+	width: 100%;
+	margin-right: 0;
+}
+
+
+/* 32 cols */
+.span-1-32 {
+	width: 3.125%;
+}
+.span-2-32 {
+	width: 6.25%;
+}
+.span-3-32 {
+	width: 9.375%;
+}
+.span-4-32 {
+	width: 12.5%;
+}
+.span-5-32 {
+	width: 15.625%;
+}
+.span-6-32 {
+	width: 18.75%;
+}
+.span-7-32 {
+	width: 21.875%;
+}
+.span-8-32 {
+	width: 25%;
+}
+.span-9-32 {
+	width: 28.125%;
+}
+.span-10-32 {
+	width: 31.25%;
+}
+.span-11-32 {
+	width: 34.375%;
+}
+.span-12-32 {
+	width: 37.5%;
+}
+.span-13-32 {
+	width: 40.625%;
+}
+.span-14-32 {
+	width: 43.75%;
+}
+.span-15-32 {
+	width: 46.875%;
+}
+.span-16-32 {
+	width: 50%;
+}
+.span-17-32 {
+	width: 53.125%;
+}
+.span-18-32 {
+	width: 56.25%;
+}
+.span-19-32 {
+	width: 59.375%;
+}
+.span-20-32 {
+	width: 62.5%;
+}
+.span-21-32 {
+	width: 65.625%;
+}
+.span-22-32 {
+	width: 68.75%;
+}
+.span-23-32 {
+	width: 71.875%;
+}
+.span-24-32 {
+	width: 75%;
+}
+.span-25-32 {
+	width: 78.125%;
+}
+.span-26-32 {
+	width: 81.25%;
+}
+.span-27-32 {
+	width: 84.375%;
+}
+.span-28-32 {
+	width: 87.5%;
+}
+.span-29-32 {
+	width: 90.625%;
+}
+.span-30-32 {
+	width: 93.75%;
+}
+.span-31-32 {
+	width: 96.875%;
+}
+.span-32-32 {
+	width: 100%;
+	margin-right: 0;
+}
+
 @media only screen and (max-width: 480px) {
 	
 	.span-1-8,
@@ -135,7 +280,55 @@
 	.span-9-12,
 	.span-10-12,
 	.span-11-12,
-	.span-12-12
+	.span-12-12,
+	.span-1-16,
+	.span-2-16,
+	.span-3-16,
+	.span-4-16,
+	.span-5-16,
+	.span-6-16,
+	.span-7-16,
+	.span-8-16,
+	.span-9-16,
+	.span-10-16,
+	.span-11-16,
+	.span-12-16,
+	.span-13-16,
+	.span-14-16,
+	.span-15-16,
+	.span-16-16,
+	.span-1-32,
+	.span-2-32,
+	.span-3-32,
+	.span-4-32,
+	.span-5-32,
+	.span-6-32,
+	.span-7-32,
+	.span-8-32,
+	.span-9-32,
+	.span-10-32,
+	.span-11-32,
+	.span-12-32,
+	.span-13-32,
+	.span-14-32,
+	.span-15-32,
+	.span-16-32,
+	.span-17-32,
+	.span-18-32,
+	.span-19-32,
+	.span-20-32,
+	.span-21-32,
+	.span-22-32,
+	.span-23-32,
+	.span-24-32,
+	.span-25-32,
+	.span-26-32,
+	.span-27-32,
+	.span-28-32,
+	.span-29-32,
+	.span-30-32,
+	.span-31-32,
+	.span-32-32
 	{
 		width: 100%; 
 	}

@@ -17,3 +17,14 @@
 {
 	background:rgba(0,154,255,0.82);
 }
+
+
+.section:nth-child(2n+1) .block-element
+{
+	background:rgba(36,142,214,0.95);
+}
+
+.section:nth-child(2n+1) .block-element:nth-child(2n+1)
+{
+	background:rgba(0,154,255,0.68);
+}

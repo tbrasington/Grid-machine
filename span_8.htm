@@ -21,27 +21,22 @@
     
     	<div id="grid-canvas"></div>
     
-	 	<!--
-		<div class="section group">
-	    
-	    	<div class="block-element span-2-8 bg-cyan"></div>
-	    	<div class="block-element span-6-8 bg-cyan-light"></div>
-	    	
-	    </div>
-	    
-	    
-	    <div class="section group">
-	    
-	    	<div class="block-element span-5-8 bg-cyan-light"></div>
-	    	<div class="block-element span-3-8 bg-cyan"></div>
-	    	
-	    </div>
-	    -->
+
 	    
         <script src="js/vendor/jquery-1.9.1.min.js"></script>
         <script src="js/vendor/underscore.js"></script>
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-
+        <script src="js/grid-machine.js"></script>
+        
+        <script>
+	        $(document).ready(function()
+			{
+				// build
+				var i_need_a_grid = new grid_constructor();
+				i_need_a_grid.grid_canvas = $('#grid-canvas');
+				i_need_a_grid.init();
+			});
+        </script>
+        
     </body>
 </html>
