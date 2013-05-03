@@ -101,15 +101,23 @@ var grid_constructor = function()
 		settings = $('<div />', { 'class' : 'section-settings'}).appendTo(section);
 		
 		var pos = _.size(that.page_structure);
-		that.page_structure[pos] = {'position':pos, 'height' : 300, 'blocks' : 0 };
+		that.page_structure[pos] = {'position':pos, 'height' : 300, 'blocks' : {} };
 		
+		console.log(that.page_structure)
 	}
 	
 	// builds a block element 
 	this.build_a_block = function(target_section)
 	{
 		var block_element = $('<div />', { 'class' : 'block-element span-1-'+that.max_size}).appendTo(target_section).css('height', target_section.height());
-			
+		console.log(target_section)
+		var section_pos = 0;
+		var pos = _.size(that.page_structure[section_pos].blocks);
+		that.page_structure[section_pos].blocks[pos] = { 'position' : pos, 'spans' : 1};
+		
+		
+		console.log(that.page_structure)
+
 	}
 	
 	// options for the section
@@ -146,7 +154,7 @@ var grid_constructor = function()
 	// function to adjust the heights of the section. bound to data as can be a mix of percentages and pixels
 	this.monitor_section_heights = function()
 	{
-		_.each($('.section'), function(item)
+		_.each($('.section'), function(item, index)
 		{
 			var data_height = $(item).data('height');
 		
@@ -161,10 +169,13 @@ var grid_constructor = function()
 				target_height = data_height.replace('px', '');
 			}
 			
+			that.page_structure[index].height = data_height;
+			
 			$(item).css('height', target_height+'px');
 			
 		});
 		
+		console.log(that.page_structure)
 		// now adjust block heights
 		that.monitor_block_heights();
 	}
