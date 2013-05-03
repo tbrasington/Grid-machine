@@ -112,7 +112,7 @@ body
 .options-element
 {
 	position: absolute;
-	width: 44px;;
+	width: 80px;
 	height: auto;
 }
 
@@ -125,6 +125,7 @@ body
 	padding: 3px;
 	background: #000;
 	border: none;
+	margin: 0 3px 0 0;
 }
 
 .option-button-delete

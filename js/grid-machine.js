@@ -27,6 +27,43 @@ var grid_constructor = function()
 			that.monitor_block_heights();
 		});
 		
+		// save the document
+		$(document).keydown(function(e)
+		{
+		    if ( (e.which == '115' || e.which == '83' ) && (e.ctrlKey || e.metaKey) )
+		    {
+		        e.preventDefault();
+		        
+		        var json_load = [
+		        	{
+		        		"columns" : that.max_size,
+		        		"structure": (that.page_structure)
+		        	}
+		        ];
+		       
+		        $.ajax({
+			        url : '/save.php',
+			        method: 'post',
+			        dataType : 'json',
+			        data : 'json=' +JSON.stringify(json_load)
+		        }).done(function(data){
+			        console.log(data.url)
+			        
+			        history.pushState(false, false,'/layout/'+data.url)
+			        
+		        }).error(function(data){
+			        
+		        });
+		        
+		        return false;
+		    }
+		    	else
+		    {
+		        return true;
+		    }        
+		}); 
+		
+		// Create a secton on the canvas
 		that.grid_canvas.on('click', function(e){
 			
 			e.preventDefault();
@@ -34,6 +71,7 @@ var grid_constructor = function()
 			that.build_a_section();
 		});
 		
+		// Create a block in a section
 		that.grid_canvas.on('click', '.section', function(e){
 			
 			e.preventDefault();
@@ -66,6 +104,14 @@ var grid_constructor = function()
 			var block = $(this).data('target-block');
 				block.attr('class', 'block-element '+ $(this).attr('value'));
 			
+			// get the section and block pos
+			var section_pos = $(this).parents('.section').data('position'),
+			block_pos =  $(this).parents('.block-element').data('position');
+			
+			// save the new position to the structure
+			that.page_structure[section_pos].blocks[block_pos].spans =  $(this).data('size');
+	
+			// remove the size picker
 			$(this).parent().remove();
 		});
 		
@@ -95,29 +141,48 @@ var grid_constructor = function()
 		});
 	}
 	
+	
+	// construct a page from previous data
+	this.off_the_bat = function(data)
+	{
+		_.each(data, function(data_section){
+			
+			var section = $('<div />', { 'class' : 'section group'}).data('height', data_section.height).data('position', data_section.position).appendTo(that.grid_canvas),
+			settings = $('<div />', { 'class' : 'section-settings'}).appendTo(section);
+			
+			_.each(data_section.blocks, function(data_block)
+			{
+				// create the element
+				$('<div />', { 'class' : 'block-element span-'+data_block.spans+'-'+that.max_size}).data('position', data_block.position).appendTo(section).css('height', section.height());
+			});
+		});
+		
+		// adjust heights
+		that.monitor_section_heights();
+	}
+	
 	this.build_a_section = function()
 	{
-		var section = $('<div />', { 'class' : 'section group'}).data('height', '300').appendTo(that.grid_canvas),
-		settings = $('<div />', { 'class' : 'section-settings'}).appendTo(section);
 		
 		var pos = _.size(that.page_structure);
+		
 		that.page_structure[pos] = {'position':pos, 'height' : 300, 'blocks' : {} };
 		
-		console.log(that.page_structure)
+		var section = $('<div />', { 'class' : 'section group'}).data('height', '300').data('position', pos).appendTo(that.grid_canvas),
+		settings = $('<div />', { 'class' : 'section-settings'}).appendTo(section);
+	
 	}
 	
 	// builds a block element 
 	this.build_a_block = function(target_section)
 	{
-		var block_element = $('<div />', { 'class' : 'block-element span-1-'+that.max_size}).appendTo(target_section).css('height', target_section.height());
-		console.log(target_section)
-		var section_pos = 0;
-		var pos = _.size(that.page_structure[section_pos].blocks);
+		var section_pos = target_section.data('position'),
+		pos = _.size(that.page_structure[section_pos].blocks);
 		that.page_structure[section_pos].blocks[pos] = { 'position' : pos, 'spans' : 1};
 		
-		
-		console.log(that.page_structure)
-
+		// create the element
+		var block_element = $('<div />', { 'class' : 'block-element span-1-'+that.max_size}).data('position', pos).appendTo(target_section).css('height', target_section.height());
+				
 	}
 	
 	// options for the section
@@ -134,7 +199,7 @@ var grid_constructor = function()
 		var options_element = $('<div />', {'class' : 'options-element'}).appendTo(target_block);
 		
 		_.each(that.sizes, function(item){
-			$('<button />', { 'class' : 'option-button', 'text' : item  + '/'+that.max_size , 'value' : 'span-'+item+'-'+that.max_size}).data('target-block', target_block).appendTo(options_element);
+			$('<button />', { 'class' : 'option-button', 'text' : item  + '/'+that.max_size , 'value' : 'span-'+item+'-'+that.max_size}).data('size',item).data('target-block', target_block).appendTo(options_element);
 		});
 		
 		var delete_element = $('<button />', { 'class' : 'option-button-delete', 'text' : 'Remove' }).data('target-block', target_block).appendTo(options_element);
@@ -175,7 +240,6 @@ var grid_constructor = function()
 			
 		});
 		
-		console.log(that.page_structure)
 		// now adjust block heights
 		that.monitor_block_heights();
 	}

@@ -1,1 +1,5 @@
+RewriteEngine on
+
+RewriteRule ^layout/(.*)$ layout.php?id=$1 [L]
+
 DirectoryIndex span_8.htm
