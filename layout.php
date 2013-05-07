@@ -54,7 +54,7 @@
 					}
 					
 					i_need_a_grid.sizes = size_array;
-					i_need_a_grid.columns = result.columns;
+					i_need_a_grid.max_size = result.columns;
 					i_need_a_grid.page_structure = result.structure;
 					
 					i_need_a_grid.off_the_bat(result.structure);
